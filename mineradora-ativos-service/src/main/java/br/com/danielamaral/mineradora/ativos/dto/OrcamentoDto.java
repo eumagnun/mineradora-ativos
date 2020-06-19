@@ -1,0 +1,42 @@
+package br.com.danielamaral.mineradora.ativos.dto;
+
+import java.util.Date;
+
+import br.com.danielamaral.mineradora.ativos.model.Ativo;
+import br.com.danielamaral.mineradora.ativos.model.Orcamento;
+import br.com.danielamaral.mineradora.ativos.model.Situacao;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ApiModel(value  = "OrcamentoAtivo")
+public class OrcamentoDto {
+	
+	@ApiModelProperty(readOnly = true)
+	private long id;
+	private Ativo ativo;
+	private Double valor=0D;
+	private Date dataVencimento;
+	private Situacao situacaoOrcamento=Situacao.pendente;
+	private Date dataAvaliacao;
+	private String nomeAvaliador;
+	
+	
+	public static OrcamentoDto parseDto(Orcamento p) {
+		OrcamentoDto orcamentoDto = new OrcamentoDto();
+		orcamentoDto.setId(p.getId());
+		orcamentoDto.setSituacaoOrcamento(p.getSituacaoOrcamento());
+		orcamentoDto.setAtivo(p.getAtivo());
+		orcamentoDto.setDataAvaliacao(p.getDataAvaliacao());
+		orcamentoDto.setDataVencimento(p.getDataVencimento());
+		orcamentoDto.setNomeAvaliador(p.getNomeAvaliador());
+		orcamentoDto.setValor(p.getValor());
+		return orcamentoDto;
+	}
+
+}
