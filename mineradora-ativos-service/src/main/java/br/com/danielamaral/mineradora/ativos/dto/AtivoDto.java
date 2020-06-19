@@ -1,6 +1,8 @@
 package br.com.danielamaral.mineradora.ativos.dto;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import br.com.danielamaral.mineradora.ativos.model.Ativo;
 import br.com.danielamaral.mineradora.ativos.model.Situacao;
@@ -28,7 +30,25 @@ public class AtivoDto {
 	
 	private Situacao situacao = Situacao.pendente;
 
-	private ControleManutencaoDto controleManutencaoDto;
+	
+	private List<ManutencaoDto> manutencoesDto;
+	
+	
+	public void addManutencao(ManutencaoDto manutencaoDto) {
+		if(this.manutencoesDto == null) {
+			this.manutencoesDto = new ArrayList<>();
+		}
+		
+		this.manutencoesDto.add(manutencaoDto);
+	}
+	
+	public void removeManutencao(ManutencaoDto manutencaoDto) {
+		if(this.manutencoesDto == null) {
+			this.manutencoesDto = new ArrayList<>();
+		}
+		
+		this.manutencoesDto.remove(manutencaoDto);
+	}
 
 	public static AtivoDto parseDto(Ativo p) {
 		AtivoDto ativoDto = new AtivoDto();
@@ -38,8 +58,10 @@ public class AtivoDto {
 		ativoDto.setTipo(p.getTipo());
 		ativoDto.setSituacao(p.getSituacao());
 		
-		if(p.getControleManutencao() != null) {
-			ativoDto.setControleManutencaoDto(ControleManutencaoDto.parseDto(p.getControleManutencao()));
+		if(p.getManutencoes() != null) {
+			List<ManutencaoDto> manutencoesDto = new ArrayList<>();
+			p.getManutencoes().forEach(m -> manutencoesDto.add(ManutencaoDto.parseDto(m)));
+			ativoDto.setManutencoesDto(manutencoesDto);
 		}
 		return ativoDto;
 	}

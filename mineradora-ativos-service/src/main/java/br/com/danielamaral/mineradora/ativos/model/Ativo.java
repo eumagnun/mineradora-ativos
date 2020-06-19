@@ -1,15 +1,19 @@
 package br.com.danielamaral.mineradora.ativos.model;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import br.com.danielamaral.mineradora.ativos.dto.AtivoDto;
+import br.com.danielamaral.mineradora.ativos.dto.ManutencaoDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -32,8 +36,24 @@ public class Ativo {
 	
 	private Situacao situacao = Situacao.pendente;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	private ControleManutencao controleManutencao;
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Manutencao> manutencoes;
+	
+	public void addManutencao(Manutencao manutencao) {
+		if(this.manutencoes == null) {
+			this.manutencoes = new ArrayList<>();
+		}
+		
+		this.manutencoes.add(manutencao);
+	}
+	
+	public void removeManutencao(Manutencao manutencao) {
+		if(this.manutencoes == null) {
+			this.manutencoes = new ArrayList<>();
+		}
+		
+		this.manutencoes.remove(manutencao);
+	}
 
 	public static Ativo parseModel(AtivoDto p) {
 		Ativo ativo = new Ativo();
@@ -43,8 +63,10 @@ public class Ativo {
 		ativo.setTipo(p.getTipo());
 		ativo.setSituacao(p.getSituacao());
 		
-		if(p.getControleManutencaoDto() != null) {
-			ativo.setControleManutencao(ControleManutencao.parseModel(p.getControleManutencaoDto()));
+		if(p.getManutencoesDto() != null) {
+			List<Manutencao> manutencoes = new ArrayList<>();
+			p.getManutencoesDto().forEach(m -> manutencoes.add(Manutencao.parseModel(m)));
+			ativo.setManutencoes(manutencoes);
 		}
 		return ativo;
 	}

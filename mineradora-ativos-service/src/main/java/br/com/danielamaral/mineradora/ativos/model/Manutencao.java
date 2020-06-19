@@ -7,16 +7,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import br.com.danielamaral.mineradora.ativos.dto.ControleManutencaoDto;
+import br.com.danielamaral.mineradora.ativos.dto.ManutencaoDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Data
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class ControleManutencao {
+@EqualsAndHashCode
+public class Manutencao {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,13 +30,13 @@ public class ControleManutencao {
 
 	private Date dataProximaManutencao;
 
-	public static ControleManutencao parseModel(ControleManutencaoDto p) {
-		ControleManutencao controleManutencao = new ControleManutencao();
-		controleManutencao.setId(p.getId());
-		controleManutencao.setDataProximaManutencao(p.getDataProximaManutencao());
-		controleManutencao.setDataUltimaManutencao(p.getDataUltimaManutencao());
-		controleManutencao.setTipoPeriodoManutencao(p.getTipoPeriodoManutencao());
-		return controleManutencao;
+	public static Manutencao parseModel(ManutencaoDto p) {
+		Manutencao manutencao = new Manutencao();
+		manutencao.setId(p.getId());
+		manutencao.setDataProximaManutencao(p.getDataProximaManutencao());
+		manutencao.setDataUltimaManutencao(p.getDataUltimaManutencao());
+		manutencao.setTipoPeriodoManutencao(p.getTipoPeriodoManutencao());
+		return manutencao;
 
 	}
 }

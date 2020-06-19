@@ -26,6 +26,6 @@ public class Estoque {
 	
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	private ControleManutencao controleManutencao;
+	private Manutencao controleManutencao;
 
 }

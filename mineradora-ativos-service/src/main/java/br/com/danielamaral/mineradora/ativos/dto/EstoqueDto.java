@@ -11,5 +11,5 @@ public class EstoqueDto {
 
 	private long id;
 	private long quantidade;
-	private ControleManutencaoDto controleManutencaoDto;
+	private ManutencaoDto controleManutencaoDto;
 }
