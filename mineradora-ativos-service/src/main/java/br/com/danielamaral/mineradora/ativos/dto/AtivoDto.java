@@ -9,6 +9,7 @@ import br.com.danielamaral.mineradora.ativos.model.Situacao;
 import br.com.danielamaral.mineradora.ativos.model.TipoAtivo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiModelProperty.AccessMode;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,7 +20,7 @@ import lombok.NoArgsConstructor;
 @ApiModel(value = "Ativo")
 public class AtivoDto {
 
-	@ApiModelProperty(readOnly = true)
+	@ApiModelProperty(accessMode = AccessMode.READ_ONLY)
 	private long id;
 
 	private String descricao;

@@ -26,16 +26,19 @@ public class Manutencao {
 
 	private TipoPeriodoManutencao tipoPeriodoManutencao;
 
-	private Date dataUltimaManutencao;
+	private Date dataPlanejada;
 
-	private Date dataProximaManutencao;
+	private Date dataRealizada;
+	
+	private String comentario;
 
 	public static Manutencao parseModel(ManutencaoDto p) {
 		Manutencao manutencao = new Manutencao();
 		manutencao.setId(p.getId());
-		manutencao.setDataProximaManutencao(p.getDataProximaManutencao());
-		manutencao.setDataUltimaManutencao(p.getDataUltimaManutencao());
+		manutencao.setDataPlanejada(p.getDataPlanejada());
+		manutencao.setDataRealizada(p.getDataRealizada());
 		manutencao.setTipoPeriodoManutencao(p.getTipoPeriodoManutencao());
+		manutencao.setComentario(p.getComentario());
 		return manutencao;
 
 	}
