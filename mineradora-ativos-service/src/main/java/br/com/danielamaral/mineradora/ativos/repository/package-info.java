@@ -1,0 +1,1 @@
+package br.com.danielamaral.mineradora.ativos.repository;
