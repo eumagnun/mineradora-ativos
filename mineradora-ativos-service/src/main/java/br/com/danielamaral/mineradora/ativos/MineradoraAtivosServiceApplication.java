@@ -10,4 +10,5 @@ public class MineradoraAtivosServiceApplication {
 		SpringApplication.run(MineradoraAtivosServiceApplication.class, args);
 	}
 
+	
 }

@@ -22,8 +22,13 @@ public class OrcamentoDto {
 	private long id;
 	private Ativo ativo;
 	private Double valor=0D;
+	
+	@ApiModelProperty(example = "2020-12-28 10:30:00")
 	private Date dataVencimento;
 	private Situacao situacaoOrcamento=Situacao.pendente;
+	
+	@ApiModelProperty(example = "2020-12-28 10:30:00")
+
 	private Date dataAvaliacao;
 	private String nomeAvaliador;
 	

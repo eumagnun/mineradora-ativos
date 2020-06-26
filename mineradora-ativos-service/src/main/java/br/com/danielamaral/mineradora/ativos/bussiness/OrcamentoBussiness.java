@@ -10,21 +10,28 @@ import br.com.danielamaral.mineradora.ativos.repository.OrcamentoRepository;
 
 @Service
 public class OrcamentoBussiness {
-	
+
 	@Autowired
 	private OrcamentoRepository repository;
-	
+
 	@Autowired
 	private AtivoRepository ativoRepository;
 
-	public void avaliarOrcamento(Orcamento orcamento) {
-		repository.save(orcamento);
-		if(orcamento.getSituacaoOrcamento().equals(Situacao.aprovado)) {
-			orcamento.getAtivo().setSituacao(Situacao.aprovado);
+	public Orcamento avaliarOrcamento(Long id, Situacao situacao) {
+		Orcamento orcamento = repository.getOne(id);
+		if (orcamento.getSituacaoOrcamento().equals(Situacao.pendente)) {
+			orcamento.setSituacaoOrcamento(situacao);
+			repository.save(orcamento);
+			
+			orcamento.getAtivo().setSituacao(orcamento.getSituacaoOrcamento());
 			ativoRepository.save(orcamento.getAtivo());
+
 		}
+
+		return orcamento;
+
 	}
-	
+
 	public void submeterOrcamento(Orcamento orcamento) {
 		repository.save(orcamento);
 	}
