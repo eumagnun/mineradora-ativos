@@ -30,18 +30,18 @@ public class OrcamentoApi {
 	@Autowired
 	OrcamentoRepository repository;
 	
-	@ApiOperation(value = "Submeter Orçamento",position = 1)
+	@ApiOperation(value = "Submeter Orçamento")
 	@PostMapping(consumes = "application/json",path = "/submeter")
 	public void submeterOrcamento(@RequestBody OrcamentoDto orcamento) {
 		bussiness.submeterOrcamento(Orcamento.parseModel(orcamento));
 	}
-	@ApiOperation(value = "Avaliar Orçamento" ,position = 2)
+	@ApiOperation(value = "Avaliar Orçamento" )
 	@PostMapping(consumes = "application/json",path = "/avaliar/{id}")
 	public OrcamentoDto avaliarOrcamento(@PathVariable Long id, @RequestBody Situacao situacao) {
 		return OrcamentoDto.parseDto(bussiness.avaliarOrcamento(id, situacao));
 	}
 	
-	@ApiOperation(value = "Pesquisar Orçamento",position = 0)
+	@ApiOperation(value = "Pesquisar Orçamento")
 	@GetMapping(produces = "application/json")
 	public List<OrcamentoDto> pesquisaOrcamento() {
 		List<OrcamentoDto> list = new ArrayList<>();

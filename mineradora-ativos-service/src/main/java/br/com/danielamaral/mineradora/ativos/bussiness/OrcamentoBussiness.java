@@ -1,5 +1,9 @@
 package br.com.danielamaral.mineradora.ativos.bussiness;
 
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.TimeZone;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,9 +25,11 @@ public class OrcamentoBussiness {
 		Orcamento orcamento = repository.getOne(id);
 		if (orcamento.getSituacaoOrcamento().equals(Situacao.pendente)) {
 			orcamento.setSituacaoOrcamento(situacao);
+			orcamento.setDataAvaliacao(new Date());
 			repository.save(orcamento);
 			
 			orcamento.getAtivo().setSituacao(orcamento.getSituacaoOrcamento());
+			orcamento.getAtivo().setDataAquisicao(new Date());
 			ativoRepository.save(orcamento.getAtivo());
 
 		}
