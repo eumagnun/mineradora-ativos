@@ -1,7 +1,5 @@
 package br.com.danielamaral.mineradora.ativos.api;
 
-import java.util.TimeZone;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -20,7 +18,7 @@ import br.com.danielamaral.mineradora.ativos.security.TokenService;
 import br.com.danielamaral.mineradora.ativos.util.LoggerUtil;
 import io.swagger.annotations.ApiOperation;
 
-@CrossOrigin(origins = "/**")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/v1/autenticacao")
 public class AutenticacaoApi {

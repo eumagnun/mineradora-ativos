@@ -21,7 +21,7 @@ import br.com.danielamaral.mineradora.ativos.model.Manutencao;
 import br.com.danielamaral.mineradora.ativos.repository.AtivoRepository;
 import io.swagger.annotations.ApiOperation;
 
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/v1/ativo")
 public class AtivoApi {

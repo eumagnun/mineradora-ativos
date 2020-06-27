@@ -19,7 +19,7 @@ import br.com.danielamaral.mineradora.ativos.model.Situacao;
 import br.com.danielamaral.mineradora.ativos.repository.OrcamentoRepository;
 import io.swagger.annotations.ApiOperation;
 
-@CrossOrigin(origins = "/**")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/v1/orcamento")
 public class OrcamentoApi {
@@ -36,7 +36,7 @@ public class OrcamentoApi {
 		bussiness.submeterOrcamento(Orcamento.parseModel(orcamento));
 	}
 	@ApiOperation(value = "Avaliar Orçamento" )
-	@PostMapping(consumes = "application/json",path = "/avaliar/{id}")
+	@PostMapping(consumes = "application/json", produces = "application/json",path = "/avaliar/{id}")
 	public OrcamentoDto avaliarOrcamento(@PathVariable Long id, @RequestBody Situacao situacao) {
 		return OrcamentoDto.parseDto(bussiness.avaliarOrcamento(id, situacao));
 	}
@@ -47,5 +47,6 @@ public class OrcamentoApi {
 		List<OrcamentoDto> list = new ArrayList<>();
 		repository.findAll().forEach(p -> list.add(OrcamentoDto.parseDto(p)));
 		
-		return list;	}
+		return list;
+	}
 }
