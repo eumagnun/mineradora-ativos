@@ -1,6 +1,9 @@
-server:
+server: 
   port: 8761
+  
 eureka:
+  instance:
+    hostname: 174.129.55.28
   client:
     registerWithEureka: true
     fetchRegistry: true
