@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,8 +40,12 @@ public class OrcamentoApi {
 	}
 	@ApiOperation(value = "Avaliar Orçamento" )
 	@PostMapping(consumes = "application/json", produces = "application/json",path = "/avaliar/{id}")
-	public OrcamentoDto avaliarOrcamento(@PathVariable Long id, @RequestBody Situacao situacao, @RequestHeader("Authorization") String token) {
-		return OrcamentoDto.parseDto(bussiness.avaliarOrcamento(id, situacao,token));
+	public ResponseEntity<OrcamentoDto> avaliarOrcamento(@PathVariable Long id, @RequestBody Situacao situacao, @RequestHeader("Authorization") String token) {
+		if(token ==null || token.length()==0) {
+			return ResponseEntity.status(HttpStatus.FORBIDDEN).body(new OrcamentoDto());
+		}
+		
+		return ResponseEntity.ok().body(OrcamentoDto.parseDto(bussiness.avaliarOrcamento(id, situacao,token)));
 	}
 	
 	@ApiOperation(value = "Pesquisar Orçamento")

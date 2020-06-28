@@ -32,7 +32,7 @@ public class OrcamentoBussiness {
 	
 	public Orcamento avaliarOrcamento(Long id, Situacao situacao, String token) {
 		Orcamento orcamento = repository.getOne(id);
-		Long idUsuario = tokenService.getIdUsuario(token);
+		Long idUsuario = tokenService.getIdUsuario(token.substring(7, token.length()));
 		Usuario u = usuarioRepository.findById(idUsuario);
 		if (orcamento.getSituacaoOrcamento().equals(Situacao.pendente)) {
 			orcamento.setSituacaoOrcamento(situacao);
