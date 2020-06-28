@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -37,8 +38,8 @@ public class OrcamentoApi {
 	}
 	@ApiOperation(value = "Avaliar Orçamento" )
 	@PostMapping(consumes = "application/json", produces = "application/json",path = "/avaliar/{id}")
-	public OrcamentoDto avaliarOrcamento(@PathVariable Long id, @RequestBody Situacao situacao) {
-		return OrcamentoDto.parseDto(bussiness.avaliarOrcamento(id, situacao));
+	public OrcamentoDto avaliarOrcamento(@PathVariable Long id, @RequestBody Situacao situacao, @RequestHeader("Authorization") String token) {
+		return OrcamentoDto.parseDto(bussiness.avaliarOrcamento(id, situacao,token));
 	}
 	
 	@ApiOperation(value = "Pesquisar Orçamento")
