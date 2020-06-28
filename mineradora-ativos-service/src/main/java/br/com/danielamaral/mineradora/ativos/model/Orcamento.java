@@ -28,7 +28,7 @@ public class Orcamento {
 	@ManyToOne(cascade = CascadeType.ALL)
 	private Ativo ativo;
 	private Double valor;
-	private Date dataVencimento;
+	private String dataVencimento;
 	private Situacao situacaoOrcamento;
 	private Date dataAvaliacao;
 	private String nomeAvaliador;

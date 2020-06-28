@@ -43,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	// config de autorizacao
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		boolean ligarSeguranca = true;
+		boolean ligarSeguranca = false;
 
 		if (ligarSeguranca) {
 			http.csrf().disable()
