@@ -65,6 +65,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	// config de recursos estaticos
 	@Override
 	public void configure(WebSecurity web) throws Exception {
+		web.ignoring().antMatchers("/**");
 	}
 
 
