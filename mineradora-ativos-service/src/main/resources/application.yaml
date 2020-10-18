@@ -6,4 +6,4 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     serviceUrl:
-      defaultZone: http://174.129.55.28:8761/eureka
+      defaultZone: http://tcc.daniel-amaral.com:8761/eureka
