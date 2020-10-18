@@ -32,7 +32,7 @@ public class AtivoApi {
 	@Autowired
 	private AtivoBussiness ativoBussiness;
 
-
+	@CrossOrigin(origins = "*")
 	@ApiOperation(value = "Pesquisar Ativos Disponiveis")
 	@GetMapping(produces = "application/json")
 	public List<AtivoDto> pesquisarAtivosDisponiveis() {
@@ -43,13 +43,14 @@ public class AtivoApi {
 		return list;
 	}
 	
-	
+	@CrossOrigin(origins = "*")
 	@ApiOperation(value = "Consultar Ativo por id")
 	@GetMapping(value = "/{id}", produces = "application/json")
 	public AtivoDto consultar(@PathVariable Long id) {
 		return AtivoDto.parseDto(repository.findById(id).get());
 	}
 
+	@CrossOrigin(origins = "*")
 	@ApiOperation(value = "Atualizar Ativo")
 	@PutMapping(consumes = "application/json")
 	public AtivoDto atualizar(@RequestBody AtivoDto ativo) {
@@ -57,6 +58,7 @@ public class AtivoApi {
 		return ativoDto;
 	}
 	
+	@CrossOrigin(origins = "*")
 	@ApiOperation(value = "cadastrar manutenção")
 	@PostMapping(value = "/{id}/manutencao", produces = "application/json")
 	public ManutencaoDto cadastrarManutençao(@PathVariable Long id,@RequestBody ManutencaoDto manutencaoDto) {
