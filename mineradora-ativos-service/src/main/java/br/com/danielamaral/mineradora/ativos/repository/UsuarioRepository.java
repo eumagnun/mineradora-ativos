@@ -25,7 +25,7 @@ public class UsuarioRepository {
 		Usuario u = new Usuario();
 		u.setId(1984L);
 		u.setLogin("admin");
-		u.setNome("PUC Minas");
+		u.setNome("Teste");
 		u.setSenha("$2a$10$2ZjaMuilGK8xh.vFin6kH.r9IHi2v5p2J1y2GCzHcaAi/n.8CdVkK");
 		
 		return u;

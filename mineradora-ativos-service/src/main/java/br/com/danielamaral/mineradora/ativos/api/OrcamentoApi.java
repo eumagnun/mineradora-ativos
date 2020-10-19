@@ -33,11 +33,14 @@ public class OrcamentoApi {
 	@Autowired
 	OrcamentoRepository repository;
 	
+	@CrossOrigin(origins = "*")
 	@ApiOperation(value = "Submeter Orçamento")
 	@PostMapping(consumes = "application/json",path = "/submeter")
 	public void submeterOrcamento(@RequestBody OrcamentoDto orcamento) {
 		bussiness.submeterOrcamento(Orcamento.parseModel(orcamento));
 	}
+	
+	@CrossOrigin(origins = "*")
 	@ApiOperation(value = "Avaliar Orçamento" )
 	@PostMapping(consumes = "application/json", produces = "application/json",path = "/avaliar/{id}")
 	public ResponseEntity<OrcamentoDto> avaliarOrcamento(@PathVariable Long id, @RequestBody Situacao situacao, @RequestHeader("Authorization") String token) {
@@ -48,6 +51,8 @@ public class OrcamentoApi {
 		return ResponseEntity.ok().body(OrcamentoDto.parseDto(bussiness.avaliarOrcamento(id, situacao,token)));
 	}
 	
+	
+	@CrossOrigin(origins = "*")
 	@ApiOperation(value = "Pesquisar Orçamento")
 	@GetMapping(produces = "application/json")
 	public List<OrcamentoDto> pesquisaOrcamento() {

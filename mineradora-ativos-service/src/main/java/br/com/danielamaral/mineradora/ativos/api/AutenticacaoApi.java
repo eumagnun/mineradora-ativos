@@ -29,7 +29,7 @@ public class AutenticacaoApi {
 	@Autowired
 	private TokenService tokenService;
 
-	
+	@CrossOrigin(origins = "*")
 	@ApiOperation(value = "autenticar")
 	@PostMapping(produces = "application/json", consumes = "application/json")
 	public ResponseEntity<TokenDto> autenticar(@RequestBody UsuarioDto usuarioDto) {
