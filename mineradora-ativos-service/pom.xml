@@ -21,6 +21,8 @@
 		<springfox-version>2.9.2</springfox-version>
 		<apache-commons>3.5</apache-commons>
 		<h2.version>1.4.199</h2.version>
+		<sonar.organization>eumagnun</sonar.organization>
+                <sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
 
 	<dependencies>
