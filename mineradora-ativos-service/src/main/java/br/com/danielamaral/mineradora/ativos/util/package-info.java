@@ -1,1 +1,0 @@
-package br.com.danielamaral.mineradora.ativos.util;
