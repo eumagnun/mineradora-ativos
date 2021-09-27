@@ -1,0 +1,171 @@
+{
+	"info": {
+		"_postman_id": "1b169463-03fb-4c05-b005-1be7eb1aed35",
+		"name": "TCC-PUC--MINERADORA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Gestão de Ativos",
+			"item": [
+				{
+					"name": "ativo-pesquisar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{dominio}}/api/v1/ativo/2",
+							"host": [
+								"{{dominio}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"ativo",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ativo-registrar-manutencao",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"dataPlanejada\": \"2020-06-19T21:53:35.459Z\",\r\n  \"dataRealizada\": \"2020-06-19T21:53:35.459Z\",\r\n  \"comentario\": \"Olá Mundo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{dominio}}/api/v1/ativo/2/manutencao",
+							"host": [
+								"{{dominio}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"ativo",
+								"2",
+								"manutencao"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ativo-consulta-id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{dominio}}/api/v1/ativo/2",
+							"host": [
+								"{{dominio}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"ativo",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "orcamento-submeter",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\":123,\r\n  \"ativo\": {\r\n    \"dataAquisicao\": \"2020-06-19T21:47:57.787Z\",\r\n    \"descricao\": \"Fuscão Presto\",\r\n    \"situacao\": \"pendente\",\r\n    \"tipo\": \"veiculo\"\r\n  },\r\n  \"dataAvaliacao\": \"2020-06-19T21:47:57.787Z\",\r\n  \"dataVencimento\": \"2020-06-19T21:47:57.787Z\",\r\n  \"nomeAvaliador\": \"string\",\r\n  \"situacaoOrcamento\": \"pendente\",\r\n  \"valor\": 1000.00\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{dominio}}//api/v1/orcamento/submeter",
+							"host": [
+								"{{dominio}}"
+							],
+							"path": [
+								"",
+								"api",
+								"v1",
+								"orcamento",
+								"submeter"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "orcamento-pesquisar",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{dominio}}//api/v1/orcamento/pesquisar",
+							"host": [
+								"{{dominio}}"
+							],
+							"path": [
+								"",
+								"api",
+								"v1",
+								"orcamento",
+								"pesquisar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "orcamento-avaliar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"id\": 1,\r\n        \"ativo\": {\r\n            \"id\": 2,\r\n            \"descricao\": \"Fuscão Presto\",\r\n            \"dataAquisicao\": \"2020-06-19T21:47:57.787+0000\",\r\n            \"tipo\": \"veiculo\",\r\n            \"situacao\": \"aprovado\",\r\n            \"manutencoes\": []\r\n        },\r\n        \"valor\": 1000.0,\r\n        \"dataVencimento\": \"2020-06-19T21:47:57.787+0000\",\r\n        \"situacaoOrcamento\": \"aprovado\",\r\n        \"dataAvaliacao\": \"2020-06-19T21:47:57.787+0000\",\r\n        \"nomeAvaliador\": \"string\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{dominio}}/api/v1/orcamento/avaliar",
+							"host": [
+								"{{dominio}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"orcamento",
+								"avaliar"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "teste-automatico",
+			"item": [],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

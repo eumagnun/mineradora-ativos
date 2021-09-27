@@ -1,9 +1,6 @@
-# mineradora-ativos
+swagger:
+http://localhost:8080/swagger-ui.html
 
-# enter in mineradora-ativos-services
 
-# mvn package
-
-# java -jar target/service.jar --server.port=8080
-
-TEste
+db-teste:
+http://localhost:8080/h2-console/

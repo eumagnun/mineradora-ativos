@@ -1,0 +1,9 @@
+server: 
+  port: 8761
+  
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://tcc.daniel-amaral.com:8761/eureka
