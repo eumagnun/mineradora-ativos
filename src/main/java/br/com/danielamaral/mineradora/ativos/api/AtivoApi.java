@@ -44,7 +44,7 @@ public class AtivoApi {
 	}
 	
 	@CrossOrigin(origins = "*")
-	@ApiOperation(value = "Consultar Ativo por id")
+	@ApiOperation(value = "Consultar Ativo Por id")
 	@GetMapping(value = "/{id}", produces = "application/json")
 	public AtivoDto consultar(@PathVariable Long id) {
 		return AtivoDto.parseDto(repository.findById(id).get());
